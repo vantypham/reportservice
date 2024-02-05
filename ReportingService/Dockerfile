@@ -1,6 +1,7 @@
 FROM maven:3.8.4-openjdk-17 AS build
 
 EXPOSE 8088
+EXPOSE 443
 WORKDIR /app
 
 COPY ./ReportingService /app
