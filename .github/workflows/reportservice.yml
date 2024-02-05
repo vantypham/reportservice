@@ -31,6 +31,6 @@ jobs:
       with:
         context: .
         push: true
-        file: ./ReportingService/dockerfile
+        file: ./ReportingService/Dockerfile
         tags: |
           ${{ env.IMAGE_ID }}
