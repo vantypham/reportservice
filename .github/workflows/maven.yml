@@ -31,6 +31,6 @@ jobs:
       #run: mvn -B package --file pom.xml
       run: | 
         mvn clean package --file ./ConfigService/pom.xml
-        java -jar ./target/configservice/SNAPSHOT.jar
+        java -jar ./target/ConfigService-0.0.1-SNAPSHOT.jar
 
   
