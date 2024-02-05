@@ -1,8 +1,10 @@
 spring:
   data:
     mongodb:
-      host: localhost
-      port: 27017
+      host: 20.189.79.251
+      port: 8586
+      user: mongoadmin
+      password: secret
       database: reporting_db
 
   zipkin:
