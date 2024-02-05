@@ -1,0 +1,14 @@
+FROM maven:3.8.4-openjdk-17 AS build
+
+EXPOSE 8761
+WORKDIR /app
+
+COPY . /app
+RUN mvn package
+
+FROM openjdk:17-alpine
+WORKDIR /app
+
+COPY --from=build /app/target/EurekaServer-0.0.1-SNAPSHOT.jar EurekaServer-0.0.1-SNAPSHOT.jar
+
+ENTRYPOINT ["java", "-jar", "EurekaServer-0.0.1-SNAPSHOT.jar"]

@@ -4,7 +4,6 @@ spring:
       host: localhost
       port: 27017
       database: reporting_db
-
   zipkin:
     base-url: http://localhost:9411/
 

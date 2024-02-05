@@ -123,6 +123,28 @@ public class NsiValueServiceImpl implements NsiValueService {
     }
 
     @Override
+    public Set<NsiReportDto> getReportMultipleTopics(String[] topicNames, Long from, Long to) {
+        Set<NsiReportDto> result = new HashSet<>();
+        for (int i = 0; i < topicNames.length; i++) {
+            Set<NsiReportDto> set = getReport(topicNames[i], from, to);
+            result.addAll(set);
+        }
+
+//        if (to == null) {
+//            to = System.currentTimeMillis();
+//        }
+//
+//        if (from == null) {
+//            result.add(getByTopicName(topicNames));
+//        } else if (StringUtils.isEmpty(topicNames) && from != null) {
+//            return getByDuration(from, to);
+//        } else if (StringUtils.isNotEmpty(topicNames)) {
+//            result.add(getByTopicNameAndDuration(topicName, from, to));
+//        }
+        return result;
+    }
+
+    @Override
     public void getCsvReport(String topicName, Long from, Long to, PrintWriter writer) {
         nsiReportDtoSetToCsv(getReport(topicName, from, to), writer);
     }

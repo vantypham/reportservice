@@ -1,0 +1,35 @@
+name: Build and Deploy Report Service
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+env:
+  REGISTRY_SERVER: cs590priusacr.azurecr.io
+  IMAGE_ID: "cs590priusacr.azurecr.io/services/reportservice:latest"
+  REGISTRY_USERNAME: "cs590priusacr"
+  REGISTRY_PASSWORD: "Mov/e2RX/Z3tDvoz/+8m+KakH2BOlpNJsOkclasXJ0+ACRDan5QU"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Sign-in to Azure container registry
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY_SERVER }}
+        username: ${{ env.REGISTRY_USERNAME }}
+        password: ${{ env.REGISTRY_PASSWORD }}
+        
+    - name: build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        file: ./ReportingService/dockerfile
+        tags: |
+          ${{ env.IMAGE_ID }}

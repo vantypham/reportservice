@@ -52,6 +52,17 @@ public class ReportController {
         return nsiValueService.getReport(topicName, from, to);
     }
 
+    @Operation(summary = "Get NSI report by topic name and time period")
+    @GetMapping("/topicNames")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<NsiReportDto> getReportMultipleTopics(@RequestParam(value = "topicNames",
+            required = false) String[] topicNames,
+                                       @RequestParam(value = "from", required = false) Long from,
+                                       @RequestParam(value = "to", required = false) Long to) {
+        System.out.println("topicNames=" + topicNames);
+        return nsiValueService.getReportMultipleTopics(topicNames, from, to);
+    }
+
     @Operation(summary = "Get NSI report by time period")
     @GetMapping("/time")
     @ResponseStatus(HttpStatus.OK)
