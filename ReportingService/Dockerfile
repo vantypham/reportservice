@@ -19,6 +19,7 @@ USER spring:spring
 COPY --from=build /app/target/*.jar /app/ReportingService.jar
 
 EXPOSE 8787
+EXPOSE 443
 
 ENV SPRING_PROFILES_ACTIVE default
 ENV SERVER.PORT 8787
