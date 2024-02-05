@@ -23,5 +23,7 @@ public interface NsiValueService {
 
     Set<NsiReportDto> getReport(String topicName, Long from, Long to);
 
+    Set<NsiReportDto> getReportMultipleTopics(String[] topicName, Long from, Long to);
+
     void getCsvReport(String topicName, Long from, Long to, PrintWriter writer);
 }
