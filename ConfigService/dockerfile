@@ -3,7 +3,7 @@ FROM maven:3.8.4-openjdk-17 AS build
 EXPOSE 8888
 WORKDIR /app
 
-COPY ./ConfigService /app
+COPY . /app
 RUN mvn package
 
 FROM openjdk:17-alpine
