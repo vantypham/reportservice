@@ -1,6 +1,6 @@
 FROM maven:3.8.4-openjdk-17 AS build
 
-EXPOSE 8761
+EXPOSE 8787
 WORKDIR /app
 
 COPY . /app
