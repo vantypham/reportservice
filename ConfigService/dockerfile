@@ -3,5 +3,5 @@ EXPOSE 8801
 WORKDIR /app
 #COPY . /app
 #RUN mvn package
-COPY target/ConfigService-0.0.1-SNAPSHOT.jar ConfigService-0.0.1-SNAPSHOT.jar
+COPY ./reportservice/ConfigService/target/ConfigService-0.0.1-SNAPSHOT.jar ConfigService-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java","-jar","/app/ConfigService-0.0.1-SNAPSHOT.jar"]
