@@ -30,7 +30,7 @@ jobs:
     - name: Build with Maven
       #run: mvn -B package --file pom.xml
       run: | 
-        mvn clean package
-        java -jar ./target/registerservice/SNAPSHOT.jar
+        mvn clean package --file ./ConfigService/pom.xml
+        java -jar ./target/configservice/SNAPSHOT.jar
 
   
