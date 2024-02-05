@@ -16,7 +16,6 @@ COPY --from=build /app/target/ReportingService-1.0.0.jar ReportingService-1.0.0.
 
 ENTRYPOINT ["java", "-jar", "ReportingService-1.0.0.jar"]
 
-
 ## Stage 1: Build the application
 #FROM maven:3.9.4 AS build
 #WORKDIR /app
