@@ -1,6 +1,7 @@
 FROM openjdk:17-alpine as build
 EXPOSE 8801
 WORKDIR /app
+RUN apk add --no-cache maven
 COPY ./ConfigService /app
 RUN mvn package
 COPY target/ConfigService-0.0.1-SNAPSHOT.jar ConfigService-0.0.1-SNAPSHOT.jar
