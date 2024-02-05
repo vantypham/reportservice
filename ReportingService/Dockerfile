@@ -1,7 +1,7 @@
 # Stage 1: Build the application
 FROM maven:3.9.4 AS build
 WORKDIR /app
-
+RUN ls
 #COPY ./pom.xml .
 #RUN mvn -B dependency:resolve-plugins dependency:resolve
 
