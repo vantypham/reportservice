@@ -50,8 +50,8 @@ jobs:
         context: .
         push: true
         file: ./ConfigService/dockerfile
-        #tags: |
-          #${{ env.IMAGE_ID }}
+        tags: |
+          ${{ env.IMAGE_ID }}
     
         
 
