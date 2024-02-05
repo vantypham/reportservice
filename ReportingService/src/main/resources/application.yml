@@ -1,0 +1,38 @@
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+server:
+    port: ${SERVER.PORT:8787}
+
+eureka:
+    client:
+        fetch-registry: true
+        register-with-eureka: true
+        service-url:
+            defaultZone: http://localhost:8761/eureka/
+spring:
+    application:
+        name: reporting-service
+    cloud:
+        config:
+            allow-override: false
+            discovery:
+                enabled: true
+            enabled: true
+            name: reporting-service-from-server
+            uri: http://localhost:8888/
+    config:
+        import: optional:configserver:http://localhost:8888/
+
+app:
+    topic:
+        name:
+            test: SS_2_1
+
+kafka:
+    topics:
+        reporting:
+#            nsi-pattern: SS_2.*
+            nsi-pattern: RS.*
