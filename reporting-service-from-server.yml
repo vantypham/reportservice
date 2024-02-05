@@ -3,7 +3,7 @@ spring:
     mongodb:
       host: 20.189.79.251
       port: 8586
-      user: mongoadmin
+      username: mongoadmin
       password: secret
       database: reporting_db
 
