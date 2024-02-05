@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import com.example.dto.JsonResponse;
-import com.example.dto.MockedData;
 import com.example.dto.NsiReportDto;
 import com.example.service.KafkaTopicService;
 import com.example.service.NsiValueService;
@@ -14,6 +12,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/report")
+@CrossOrigin
 public class ReportController {
 
     private final NsiValueService nsiValueService;
@@ -33,25 +32,25 @@ public class ReportController {
         return kafkaTopicService.getAllTopics();
     }
 
-    @Operation(summary = "Get NSI report from mock data")
-    @CrossOrigin
+//    @Operation(summary = "Get NSI report from mock data")
+//    @CrossOrigin
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public JsonResponse getReport(@RequestParam(value = "topicName", required = false) String topicName,
+//                                  @RequestParam(value = "from", required = false) Long from,
+//                                  @RequestParam(value = "to", required = false) Long to) {
+//        return MockedData.generateReport();
+//    }
+
+    @Operation(summary = "Get NSI report by topic name and time period")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public JsonResponse getReport(@RequestParam(value = "topicName", required = false) String topicName,
-                                  @RequestParam(value = "from", required = false) Long from,
-                                  @RequestParam(value = "to", required = false) Long to) {
-        return MockedData.generateReport();
+    public Set<NsiReportDto> getReport(@RequestParam(value = "topicName",
+        required = false) String topicName,
+                                       @RequestParam(value = "from", required = false) Long from,
+                                       @RequestParam(value = "to", required = false) Long to) {
+        return nsiValueService.getReport(topicName, from, to);
     }
-
-    // @Operation(summary = "Get NSI report by topic name and time period")
-    // @GetMapping
-    // @ResponseStatus(HttpStatus.OK)
-    // public Set<NsiReportDto> getReport(@RequestParam(value = "topicName",
-    // required = false) String topicName,
-    // @RequestParam(value = "from", required = false) Long from,
-    // @RequestParam(value = "to", required = false) Long to) {
-    // return nsiValueService.getReport(topicName, from, to);
-    // }
 
     @Operation(summary = "Get NSI report by time period")
     @GetMapping("/time")
@@ -71,7 +70,7 @@ public class ReportController {
     @GetMapping("/topic/{topicName}/time")
     @ResponseStatus(HttpStatus.OK)
     public NsiReportDto getByTimeAndTopic(@PathVariable("topicName") String topicName,
-            @RequestParam("from") Long from, @RequestParam("to") Long to) {
+                                          @RequestParam("from") Long from, @RequestParam("to") Long to) {
         return nsiValueService.getByTopicNameAndDuration(topicName, from, to);
     }
 }
