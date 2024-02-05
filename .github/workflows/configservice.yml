@@ -34,16 +34,6 @@ jobs:
         username: ${{ env.REGISTRY_USERNAME }}
         password: ${{ env.REGISTRY_PASSWORD }}
         
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      #run: mvn -B package --file pom.xml
-      run: | 
-        mvn clean package --file ./ConfigService/pom.xml
     - name: build and push
       uses: docker/build-push-action@v3
       with:
