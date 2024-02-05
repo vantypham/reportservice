@@ -2,7 +2,7 @@
 FROM maven:3.9.4 AS build
 WORKDIR /app
 
-COPY pom.xml .
+COPY ./pom.xml .
 RUN mvn -B dependency:resolve-plugins dependency:resolve
 
 COPY . .
