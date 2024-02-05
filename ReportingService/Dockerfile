@@ -9,10 +9,10 @@ RUN mvn package
 FROM openjdk:17-alpine
 WORKDIR /app
 
-COPY --from=build /app/target/ReportingService-0.0.1-SNAPSHOT.jar ReportingService-0.0.1-SNAPSHOT.jar
+COPY --from=build /app/target/*.jar ReportingService-0.0.1.jar
 ENV SPRING_PROFILES_ACTIVE default
 ENV SERVER.PORT 8787
-ENTRYPOINT ["java", "-jar", "ReportingService-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "ReportingService-0.0.1.jar"]
 
 # # Stage 1: Build the application
 # FROM maven:3.9.4 AS build
