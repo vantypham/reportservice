@@ -1,6 +1,5 @@
 FROM maven:3.8.4-openjdk-17 AS build
 
-EXPOSE 443
 WORKDIR /app
 
 COPY ./ReportingService /app
@@ -12,6 +11,8 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar ReportingService-0.0.1.jar
 ENV SPRING_PROFILES_ACTIVE default
 #ENV SERVER.PORT 8787
+EXPOSE 443
+EXPOSE 80
 ENTRYPOINT ["java", "-jar", "ReportingService-0.0.1.jar"]
 
 # # Stage 1: Build the application
