@@ -34,5 +34,5 @@ app:
 kafka:
     topics:
         reporting:
-#            nsi-pattern: SS_2.*
-            nsi-pattern: RS.*
+            nsi-pattern: SS.*
+#            nsi-pattern: RS.*
