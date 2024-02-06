@@ -20,9 +20,11 @@ const baseUrl = environment.baseUrl;
 @Injectable()
 export class ReportService {
     byTimeRangeUrl = baseUrl;
+    byMultipleTopicAndTimeRangeUrl = baseUrl + "/topicNames";
     byTopicUrl = baseUrl + "/topic/";
     topicsUrl = baseUrl + "/topics";
     csvReportUrl = baseUrl + "/csv";
+    csvMultiTopicsReportUrl = baseUrl + "/csv/topicNames";
 
     private handleError: HandleError;
 
@@ -41,7 +43,6 @@ export class ReportService {
     ): Observable<any> {
         let params = new HttpParams();
 
-        // TODO uncomment this once real API is available
         params = params.set('from', from);
         params = params.set('to', to);
         params = params.set('topicName', topicName);
@@ -50,6 +51,31 @@ export class ReportService {
 
         return this.http
             .get<any>(this.byTimeRangeUrl, options)
+            .pipe(
+                map((response) => {
+                    // return response.data;
+                    return response;
+                }),
+                catchError(this.handleError("getReportByTimeRange", []))
+            );
+    }
+
+    getReportByMultiTopicAndTimeRange(
+        topicNames: string[],
+        from: number,
+        to: number
+    ): Observable<any> {
+        const topics = topicNames.join(',');
+
+        let params = new HttpParams();
+        params = params.set('from', from);
+        params = params.set('to', to);
+        params = params.set('topicNames', topics);
+
+        const options = from && to ? { params: params } : {};
+
+        return this.http
+            .get<any>(this.byMultipleTopicAndTimeRangeUrl, options)
             .pipe(
                 map((response) => {
                     // return response.data;
@@ -77,16 +103,24 @@ export class ReportService {
             topicName;
         window.open(csvDownloadUrl, "_blank");
     }
+    generateCsvMultiTopics(topicNames: string[], from: number, to: number): void {
+        const topics = topicNames.join(',');
+        let csvDownloadUrl =
+            this.csvMultiTopicsReportUrl +
+            "?from=" +
+            from +
+            "&to=" +
+            to +
+            "&topicNames=" +
+            topics;
+        window.open(csvDownloadUrl, "_blank");
+    }
 
     getTopics(): Observable<string[]> {
         return this.http.get<string[]>(this.topicsUrl)
             .pipe(
                 catchError(this.handleError('getTopics', []))
             );
-        // TODO uncomment this once real API is available
-        // return of(["NSI_1_2", "NSI_1_3", "NSI_1_4"]).pipe(
-        //     catchError(this.handleError("getTopics", []))
-        // );
     }
 
     convertToChartModel(reports: Report[]): ChartModel[] {

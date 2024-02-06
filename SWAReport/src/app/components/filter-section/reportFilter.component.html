@@ -24,7 +24,7 @@
 
     <div class="col-auto">
       <label>Topic name</label>
-      <dropdown-list (getTopicName)="getTopicChanged($event)"></dropdown-list>
+      <dropdown-list (topicChange)="getTopicChanged($event)" (topicsChange)="getTopicsChanged($event)"></dropdown-list>
     </div>
 
     <div class="col-auto">

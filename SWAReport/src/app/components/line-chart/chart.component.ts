@@ -16,6 +16,9 @@ import { TopicFilter } from "../../model/topicFilter";
 import * as Highcharts from "highcharts";
 import { DatePipe } from "@angular/common";
 
+import noData from 'highcharts/modules/no-data-to-display';
+noData(Highcharts);
+
 @Component({
     selector: "app-chart",
     templateUrl: "chart.component.html",
@@ -58,34 +61,48 @@ export class ChartComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (this.topicFilter.actionType == "GenerateReport") {
-            this.getReportByTimeRange(
-                this.topicFilter.topicName,
-                this.topicFilter.startDateTime,
-                this.topicFilter.endDateTime
-            );
+            // this.getReportByTimeRange(
+            //     this.topicFilter.topicName,
+            //     this.topicFilter.startDateTime,
+            //     this.topicFilter.endDateTime
+            // );
+            if (this.topicFilter.topicNames.length > 0) {
+                this.getReportByMultiTopicAndTimeRange(
+                    this.topicFilter.topicNames,
+                    this.topicFilter.startDateTime,
+                    this.topicFilter.endDateTime
+                );
+            } else {
+                this.getReportByTimeRange(
+                    "",
+                    this.topicFilter.startDateTime,
+                    this.topicFilter.endDateTime
+                );
+            }
+
         } else if (this.topicFilter.actionType == "DownloadCsv") {
-            this.downloadCsv(
-                this.topicFilter.topicName,
-                this.topicFilter.startDateTime,
-                this.topicFilter.endDateTime
-            );
+            // this.downloadCsv(
+            //     this.topicFilter.topicName,
+            //     this.topicFilter.startDateTime,
+            //     this.topicFilter.endDateTime
+            // );
+            if (this.topicFilter.topicNames.length > 0) {
+                this.downloadCsvMultiTopics(
+                    this.topicFilter.topicNames,
+                    this.topicFilter.startDateTime,
+                    this.topicFilter.endDateTime
+                );
+            } else {
+                this.downloadCsv(
+                    "",
+                    this.topicFilter.startDateTime,
+                    this.topicFilter.endDateTime
+                );
+            }
         }
     }
 
     ngOnInit() {
-        // this.chart = new CanvasJS.Chart("chartContainer", {
-        //     theme: "light1", // "light2", "dark1", "dark2"
-        //     title: {
-        //         text: "Reporting Service",
-        //     },
-        //     data: [
-        //         {
-        //             type: "line", // Change type to "bar", "area", "spline", "pie",etc.
-        //             dataPoints: [],
-        //         },
-        //     ],
-        // });
-        // this.chart.render();
         // if (this.topicFilter.actionType == "GenerateReport") {
         //     this.getReportByTimeRange(
         //         this.topicFilter.topicName,
@@ -93,6 +110,7 @@ export class ChartComponent implements OnInit, OnChanges {
         //         this.topicFilter.endDateTime
         //     );
         // }
+        this.chartRef = Highcharts.chart('highchartContainer', this.chartOptions);
     }
 
     downloadCsv(
@@ -101,6 +119,14 @@ export class ChartComponent implements OnInit, OnChanges {
         endDateTime: number
     ): void {
         this.reportService.generateCsv(topicName, startDatetime, endDateTime);
+    }
+
+    downloadCsvMultiTopics(
+        topicNames: string[],
+        startDatetime: number,
+        endDateTime: number
+    ): void {
+        this.reportService.generateCsvMultiTopics(topicNames, startDatetime, endDateTime);
     }
 
     getReportByTimeRange(
@@ -117,11 +143,21 @@ export class ChartComponent implements OnInit, OnChanges {
             });
     }
 
-    updateChart(reports: Report[]): void {
-        // this.chartModel = this.reportService.convertToChartModel(reports);
-        // this.chart.options.data = this.chartModel;
-        // this.chart.render();
+    getReportByMultiTopicAndTimeRange(
+        topicNames: string[],
+        startDatetime: number,
+        endDateTime: number
+    ): void {
+        this.reportService
+            .getReportByMultiTopicAndTimeRange(topicNames, startDatetime, endDateTime)
+            .subscribe((data) => {
+                if (data.length > 0) {
+                    this.updateChart(data);
+                }
+            });
+    }
 
+    updateChart(reports: Report[]): void {
         this.chartOptions.series = this.reportService.convertToHighChartModel(reports);
         this.chartRef = Highcharts.chart('highchartContainer', this.chartOptions);
     }

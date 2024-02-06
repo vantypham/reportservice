@@ -8,15 +8,21 @@ import { ReportService } from '../../../services/report.service';
   providers: [ReportService]
 })
 export class DropdownListComponent implements OnInit {
-  topics: string[] = ["Choose topic name"];
+  topics: string[] = ["All"];
   chooseTopic: string = "";
 
+  chooseTopics: string[] = [];
+
   @Output()
-  getTopicName: EventEmitter<string> = new EventEmitter<string>();
+  topicChange: EventEmitter<string> = new EventEmitter<string>();
+
+  @Output()
+  topicsChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   ngOnInit(): void {
     this.getTopics();
     this.chooseTopic = this.topics[0];
+    this.chooseTopics.push(this.topics[0]);
   }
 
   constructor(private reportService: ReportService) {
@@ -31,12 +37,19 @@ export class DropdownListComponent implements OnInit {
   getTopicChange(event: any) {
     console.log(event);
     if(event.value == this.topics[0]){
-      this.getTopicName.emit("");
+      this.topicChange.emit("");
     } else {
-      this.getTopicName.emit(event.value);
+      this.topicChange.emit(event.value);
     }
-    
-    
+  }
+
+  onTopicsChange(event: any) {
+    console.log(event);
+    if(event.value[0] == this.topics[0]){
+      this.topicsChange.emit([]);
+    } else {
+      this.topicsChange.emit(event.value);
+    }
   }
 
 }

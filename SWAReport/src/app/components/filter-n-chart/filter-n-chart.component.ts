@@ -14,6 +14,7 @@ export class FilterNChartComponent implements OnInit {
 
   topicFilter: TopicFilter = {
     topicName: "",
+    topicNames: [],
     startDateTime: 0,
     endDateTime: 0,
     actionType: ""

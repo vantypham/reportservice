@@ -1,8 +1,17 @@
-<mat-form-field appearance="fill">
-    <!-- <mat-label>Choose topic name</mat-label> -->
-    <mat-select (selectionChange)="getTopicChange($event)" [(value)]="chooseTopic" >
-      <mat-option *ngFor="let topic of topics" [value]="topic">
-        {{topic}}
-      </mat-option>
+<!--<mat-form-field appearance="fill">-->
+<!--    &lt;!&ndash; <mat-label>Choose topic name</mat-label> &ndash;&gt;-->
+<!--    <mat-select (selectionChange)="getTopicChange($event)" [(value)]="chooseTopic" >-->
+<!--      <mat-option *ngFor="let topic of topics" [value]="topic">-->
+<!--        {{topic}}-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+<!--</mat-form-field>-->
+
+<mat-form-field>
+    <mat-label>Choose topics</mat-label>
+    <mat-select (selectionChange)="onTopicsChange($event)" [(value)]="chooseTopics" multiple>
+        <mat-option *ngFor="let topic of topics" [value]="topic">
+            {{topic}}
+        </mat-option>
     </mat-select>
 </mat-form-field>

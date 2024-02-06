@@ -11,6 +11,9 @@ export class ReportFilter implements OnInit {
     topicName: string = "";
 
     @Input()
+    topicNames: string[] = [];
+
+    @Input()
     startTime: string = "00:00";
 
     @Input()
@@ -33,7 +36,8 @@ export class ReportFilter implements OnInit {
             startDateTime: startDT.getTime(),
             endDateTime: endDT.getTime(),
             actionType: "",
-            topicName: this.topicName
+            topicName: this.topicName,
+            topicNames: this.topicNames
         };
         return obj;
     }
@@ -64,6 +68,10 @@ export class ReportFilter implements OnInit {
 
     getTopicChanged(event: any){
         this.topicName = event;
+    }
+
+    getTopicsChanged(event: any){
+        this.topicNames = event;
     }
     
     getDateTimeFromDateNTime(date: Date, time: String){
