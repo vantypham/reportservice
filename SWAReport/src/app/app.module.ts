@@ -6,8 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { DatePipe } from '@angular/common';
-import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
-var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -44,7 +42,6 @@ import { HighchartsChartModule } from 'highcharts-angular';
   declarations: [
     AppComponent,
     TopBarComponent,
-    CanvasJSChart,
     ChartComponent,
     ReportFilter,
     DatepickerComponent,

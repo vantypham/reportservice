@@ -6,9 +6,6 @@ import {
     SimpleChanges,
 } from "@angular/core";
 
-import * as CanvasJSAngularChart from "../../../assets/canvasjs.angular.component";
-var CanvasJS = CanvasJSAngularChart.CanvasJS;
-
 import { ChartDTO, ChartModel, Report } from "../../services/report";
 import { ReportService } from "../../services/report.service";
 import { TopicFilter } from "../../model/topicFilter";
