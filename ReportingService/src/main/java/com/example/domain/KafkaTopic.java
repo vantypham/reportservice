@@ -13,6 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class KafkaTopic {
     @Id
     private String name;
-    private int firstIndex;
-    private int secondIndex;
+    private String firstIndex;
+    private String secondIndex;
 }
