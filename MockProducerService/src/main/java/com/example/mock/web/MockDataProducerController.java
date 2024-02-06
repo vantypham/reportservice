@@ -19,15 +19,15 @@ public class MockDataProducerController {
     }
 
 
-    @Scheduled(fixedRate = 21000)
+    @Scheduled(fixedRate = 31000)
     public void generateData() {
         this.genData();
     }
-    @Scheduled(fixedRate = 31000)
+    @Scheduled(fixedRate = 71000)
     public void generateData2() {
         service.genDataAndPutToKafka2();
     }
-    @Scheduled(fixedRate = 45000)
+    @Scheduled(fixedRate = 321000)
     public void generateData3() {
         service.genDataAndPutToKafka3();
     }
