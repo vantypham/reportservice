@@ -34,6 +34,19 @@ public class CsvReportController {
         nsiValueService.getCsvReport(topicName, from, to, servletResponse.getWriter());
     }
 
+    @Operation(summary = "Get NSI CSV report by LIST OF topic names and time period")
+    @GetMapping("/report/csv/topicNames")
+    @ResponseStatus(HttpStatus.OK)
+    public void getCsvReportMultipleTopics(@RequestParam(value = "topicNames", required = false) String[] topicNames,
+                             @RequestParam(value = "from", required = false) Long from,
+                             @RequestParam(value = "to", required = false) Long to,
+                             HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"nsi_report.csv\"");
+        servletResponse.addHeader("Access-Control-Allow-Origin", "*");
+        nsiValueService.getCsvReportMultipleTopics(topicNames, from, to, servletResponse.getWriter());
+    }
+
     @Operation(summary = "Get NSI CSV report by time period")
     @GetMapping("/csv/time")
     @ResponseStatus(HttpStatus.OK)

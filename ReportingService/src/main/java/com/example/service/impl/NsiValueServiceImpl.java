@@ -149,6 +149,11 @@ public class NsiValueServiceImpl implements NsiValueService {
         nsiReportDtoSetToCsv(getReport(topicName, from, to), writer);
     }
 
+    @Override
+    public void getCsvReportMultipleTopics(String[] topicNames, Long from, Long to, PrintWriter writer) {
+        nsiReportDtoSetToCsv(getReportMultipleTopics(topicNames, from, to), writer);
+    }
+
     private void nsiReportDtoToCsv(NsiReportDto nsiReportDto, PrintWriter writer) {
         try (CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
             csvPrinter.printRecord("Topic name", "Timestamp", "Value");
