@@ -88,14 +88,14 @@ public class NsiValueServiceImpl implements NsiValueService {
         if (opKafkaTopicById.isPresent()) {
             kafkaTopic = opKafkaTopicById.get();
         } else {
-            int fistIndex = 0;
-            int secondIndex = 0;
+            //int fistIndex = 0;
+            //int secondIndex = 0;
             String[] parts = topicName.split(TOPIC_NAME_SEPARATOR);
-            if (parts.length == 3) {
-                fistIndex = Integer.parseInt(parts[1]);
-                secondIndex = Integer.parseInt(parts[2]);
-            }
-            kafkaTopic = kafkaTopicRepository.save(new KafkaTopic(topicName, fistIndex, secondIndex));
+            //if (parts.length == 3) {
+            //    fistIndex = Integer.parseInt(parts[1]);
+            //    secondIndex = Integer.parseInt(parts[2]);
+            //}
+            kafkaTopic = kafkaTopicRepository.save(new KafkaTopic(topicName, parts[1], parts[2]));
         }
 
         NSIValue nsiValue = new NSIValue();
