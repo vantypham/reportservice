@@ -52,7 +52,7 @@ public class ReportController {
         return nsiValueService.getReport(topicName, from, to);
     }
 
-    @Operation(summary = "Get NSI report by topic name and time period")
+    @Operation(summary = "Get NSI report by multiple topic name and time period")
     @GetMapping("/topicNames")
     @ResponseStatus(HttpStatus.OK)
     public Set<NsiReportDto> getReportMultipleTopics(@RequestParam(value = "topicNames",
