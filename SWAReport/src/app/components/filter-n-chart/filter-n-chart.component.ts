@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { TopicFilter } from '../../model/topicFilter';
+import {Component, OnInit} from '@angular/core';
+import {TopicFilter} from '../../model/topicFilter';
 
 @Component({
   selector: 'filter-n-chart',
@@ -20,17 +20,18 @@ export class FilterNChartComponent implements OnInit {
     actionType: ""
   }
 
-  constructor(){
+  constructor() {
     this.topicName = "";
-    this.startOnlyTime = new Date().getHours()+":"+(new Date().getMinutes());
-    this.endOnlyTime = new Date().getHours()+":"+new Date().getMinutes();
-  }
-  
-  ngOnInit(): void {
-    
+    let currentDate = new Date();
+    this.startOnlyTime = currentDate.getHours() - 3 + ":" + currentDate.getMinutes();
+    this.endOnlyTime = currentDate.getHours() + ":" + currentDate.getMinutes();
   }
 
-  getTopicFilterCondition(event: TopicFilter){
-    this.topicFilter = event; 
+  ngOnInit(): void {
+
+  }
+
+  getTopicFilterCondition(event: TopicFilter) {
+    this.topicFilter = event;
   }
 }
