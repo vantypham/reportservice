@@ -14,7 +14,7 @@ management:
                 include:
                     - '*'
 server:
-    port: ${PORT:8787}
+    port: 80
 
 eureka:
     client:
@@ -23,7 +23,7 @@ eureka:
         service-url:
             defaultZone: http://20.189.79.251:8761/eureka/
     instance:
-        hostname: http://cs590priusreportservice.azurewebsites.net/
+        hostname: cs590priusreportservice.azurewebsites.net
 spring:
     application:
         name: reporting-service
