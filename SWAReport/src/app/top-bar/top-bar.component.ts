@@ -5,8 +5,7 @@ import {LoadingService} from "../services/loading.service";
 
 @Component({
   selector: 'app-top-bar',
-  templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.css']
+  templateUrl: './top-bar.component.html'
 })
 export class TopBarComponent implements OnInit {
 
