@@ -22,6 +22,8 @@ eureka:
         register-with-eureka: true
         service-url:
             defaultZone: http://20.189.79.251:8761/eureka/
+    instance:
+        hostname: http://cs590priusreportservice.azurewebsites.net/
 spring:
     application:
         name: reporting-service
