@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -48,21 +49,28 @@ public class APIsController {
     @PutMapping("/apis/{id}")
     public API updateAPI(@PathVariable String id, @RequestBody API api) {
 
-        return apis.stream()
+        Optional<API> object = apis.stream()
                 .filter(a -> a.getId().equals(id))
-                .findFirst()
-                .map(a -> {
-                    a.setName(api.getName());
-                    a.setEndpoint(api.getEndpoint());
-                    a.setDescription(api.getDescription());
-                    a.setStatus(api.getStatus());
-                    return a;
-                })
-                .orElse(null);
+                .findFirst();
+        if (object.isPresent()) {
+            int index = apis.indexOf(object.get());
+            apis.set(index,api);
+        }
+        return api;
+    }
+
+    @DeleteMapping("/apis/{id}")
+    public String deleteAPI(@PathVariable String id) {
+        Optional<API> object = apis.stream()
+                .filter(a -> a.getId().equals(id))
+                .findFirst();
+        object.ifPresent(api -> apis.remove(api));
+        return "";
     }
 
     @PostMapping("/apis")
     public API createAPI(@RequestBody API api) {
+        System.out.println(api);
         api.setId(apis.size() + 1 + "");
         apis.add(api);
         return api;
