@@ -1,0 +1,14 @@
+FROM maven:3.8.4-openjdk-17 AS build
+
+EXPOSE 9090
+WORKDIR /app
+
+COPY . /app
+RUN mvn package
+
+FROM openjdk:17-alpine
+WORKDIR /app
+
+COPY --from=build /app/target/ApiGateway-0.0.1-SNAPSHOT.jar ApiGateway-0.0.1-SNAPSHOT.jar
+
+ENTRYPOINT ["java", "-jar", "ApiGateway-0.0.1-SNAPSHOT.jar"]
