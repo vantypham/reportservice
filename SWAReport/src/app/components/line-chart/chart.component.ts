@@ -32,6 +32,9 @@ export class ChartComponent implements OnInit, OnChanges {
     Highcharts: typeof Highcharts = Highcharts;
     chartRef: Highcharts.Chart = {} as Highcharts.Chart;
     chartOptions: Highcharts.Options = {
+        lang: {
+            noData: 'No data to display',
+        },
         title: {
             text: "",
         },
@@ -51,10 +54,23 @@ export class ChartComponent implements OnInit, OnChanges {
         series: []
     };
 
+    isLoading: boolean = true;
+
     constructor(
         private reportService: ReportService,
         private datePipe: DatePipe
     ) {}
+
+    ngOnInit() {
+        // if (this.topicFilter.actionType == "GenerateReport") {
+        //     this.getReportByTimeRange(
+        //         this.topicFilter.topicName,
+        //         this.topicFilter.startDateTime,
+        //         this.topicFilter.endDateTime
+        //     );
+        // }
+        this.chartRef = Highcharts.chart('highchartContainer', this.chartOptions);
+    }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (this.topicFilter.actionType == "GenerateReport") {
@@ -97,17 +113,6 @@ export class ChartComponent implements OnInit, OnChanges {
                 );
             }
         }
-    }
-
-    ngOnInit() {
-        // if (this.topicFilter.actionType == "GenerateReport") {
-        //     this.getReportByTimeRange(
-        //         this.topicFilter.topicName,
-        //         this.topicFilter.startDateTime,
-        //         this.topicFilter.endDateTime
-        //     );
-        // }
-        this.chartRef = Highcharts.chart('highchartContainer', this.chartOptions);
     }
 
     downloadCsv(

@@ -1,6 +1,6 @@
 /* Global Styles */
 
-* {
+.container {
   font-family: 'Roboto', Arial, sans-serif;
   color: #616161;
   box-sizing: border-box;
@@ -120,19 +120,28 @@ button .btn .btn-primary .mb-3 {
 /* Top Bar */
 
 app-top-bar {
-  width: 100%;
-  height: 68px;
-  background-color: #1976d2;
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  /*width: 100%;*/
+  /*height: 68px;*/
+  /*background-color: #1976d2;*/
+  /*padding: 16px;*/
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*justify-content: space-between;*/
+  /*align-items: center;*/
+  color: #fff
 }
 
 app-top-bar h1 {
   color: white;
   margin: 0;
+}
+
+report-filter button, report-filter button span {
+  color: #fff;
+}
+
+.mb-24px {
+  margin-bottom: 24px;
 }
 
 /* Checkout Cart, Shipping Prices */

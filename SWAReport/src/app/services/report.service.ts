@@ -7,7 +7,7 @@ import {map, Observable, of} from "rxjs";
 import { catchError } from "rxjs/operators";
 
 import { Report, ReportObj, ChartModel, ChartDTO } from "./report";
-import { HttpErrorHandler, HandleError } from "../http-error-handler.service";
+import { HttpErrorHandler, HandleError } from "./http-error-handler.service";
 import { environment } from "../../environments/environment";
 
 const httpOptions = {

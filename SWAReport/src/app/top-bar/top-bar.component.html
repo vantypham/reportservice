@@ -1,3 +1,12 @@
-<a href="/">
-  <h1>Reporting Service</h1>
-</a>
+<!--<a href="/">-->
+<!--  <h1>Reporting Service</h1>-->
+<!--</a>-->
+
+<mat-toolbar color="primary">
+    <span>Reporting Service</span>
+    <span class="example-spacer"></span>
+</mat-toolbar>
+
+<div *ngIf="isLoading" class="loading-indicator">
+    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+</div>

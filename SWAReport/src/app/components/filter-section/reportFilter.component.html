@@ -28,10 +28,21 @@
     </div>
 
     <div class="col-auto">
-      <button (click)="generateReport()" class="btn btn-primary mb-3 mrb">Generate report</button>
+<!--      <button (click)="generateReport()" class="btn btn-primary mb-3 mrb">Generate report</button>-->
+        <label></label>
+        <button mat-fab extended (click)="generateReport()" color="primary" class="mb-24px" >
+            Chart <mat-icon>show_chart</mat-icon>
+        </button>
     </div>
     <div class="col-auto">
-      <button (click)="downloadCsv()" class="btn btn-primary mb-3 mrb">Download csv</button>
+<!--      <button (click)="downloadCsv()" class="btn btn-primary mb-3 mrb">Download csv</button>-->
+        <button mat-fab extended (click)="downloadCsv()"  color="primary" class="mb-24px"
+                aria-label="Example icon button with a bookmark icon">
+            Download CSV
+            <mat-icon>file_download</mat-icon>
+        </button>
     </div>
+
+
   </div>
 </div>
