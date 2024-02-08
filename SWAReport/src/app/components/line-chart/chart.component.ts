@@ -16,6 +16,8 @@ import { DatePipe } from "@angular/common";
 import noData from 'highcharts/modules/no-data-to-display';
 noData(Highcharts);
 
+import * as moment from 'moment-timezone';
+
 @Component({
     selector: "app-chart",
     templateUrl: "chart.component.html",
@@ -47,6 +49,12 @@ export class ChartComponent implements OnInit, OnChanges {
         },
         xAxis: {
             type: 'datetime',
+            labels: {
+                formatter: function () {
+                    // Format timestamp to display in US Central Time (GMT-6)
+                    return moment(this.value).tz('America/Chicago').format('HH:mm');
+                }
+            },
             accessibility: {
                 rangeDescription: "Time",
             },
