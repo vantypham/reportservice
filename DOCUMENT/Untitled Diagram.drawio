@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-02-08T03:34:07.303Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="q1UI800KvqRFN03tIoKU" version="21.6.8" type="device" pages="5">
+<mxfile host="app.diagrams.net" modified="2024-02-08T16:58:35.779Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="unK4ghjloRO0npW8WSjF" version="23.1.2" type="device" pages="5">
   <diagram name="integration" id="ZZu6i4v2K-H8nIZnbSRO">
-    <mxGraphModel dx="1194" dy="655" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="977" dy="607" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -205,12 +205,12 @@
     </mxGraphModel>
   </diagram>
   <diagram id="XwVUIRPAMJ1x9UDXZ0vp" name="Layers">
-    <mxGraphModel dx="1594" dy="1055" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1549" dy="1114" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="PufqcfkgENdnon7e39rP-14" value="" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" parent="1" vertex="1">
-          <mxGeometry x="356" y="-70" width="178" height="434" as="geometry" />
+        <mxCell id="KdQ6NyA7JyGh4gVll8p5-1" value="" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="538" y="-70" width="178" height="434" as="geometry" />
         </mxCell>
         <mxCell id="PufqcfkgENdnon7e39rP-1" value="Presentation layer" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" parent="1" vertex="1">
           <mxGeometry x="-373" y="-70" width="178" height="434" as="geometry" />
@@ -221,7 +221,7 @@
         <mxCell id="PufqcfkgENdnon7e39rP-4" value="Service layer" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" parent="1" vertex="1">
           <mxGeometry x="-192" y="-70" width="178" height="434" as="geometry" />
         </mxCell>
-        <mxCell id="PufqcfkgENdnon7e39rP-5" value="SensitivityIndexService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
+        <mxCell id="PufqcfkgENdnon7e39rP-5" value="ReportService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-172.5" y="-8" width="139" height="47" as="geometry" />
         </mxCell>
         <mxCell id="PufqcfkgENdnon7e39rP-6" value="Business layer" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" parent="1" vertex="1">
@@ -230,23 +230,26 @@
         <mxCell id="PufqcfkgENdnon7e39rP-7" value="DataAccess layer" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" parent="1" vertex="1">
           <mxGeometry x="173" y="-70" width="178" height="434" as="geometry" />
         </mxCell>
-        <mxCell id="PufqcfkgENdnon7e39rP-8" value="SensitivityRepository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="195" y="-28" width="139" height="47" as="geometry" />
+        <mxCell id="PufqcfkgENdnon7e39rP-8" value="NsiRepository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="192.5" y="-8" width="139" height="47" as="geometry" />
         </mxCell>
-        <mxCell id="PufqcfkgENdnon7e39rP-9" value="SensitivityValue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="9.5" y="-12" width="139" height="47" as="geometry" />
+        <mxCell id="PufqcfkgENdnon7e39rP-9" value="NsiValue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-5.75" y="-8" width="169.5" height="47" as="geometry" />
         </mxCell>
-        <mxCell id="PufqcfkgENdnon7e39rP-10" value="Topic&lt;br&gt;(from kafka SS..)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="9.5" y="62" width="139" height="47" as="geometry" />
+        <mxCell id="PufqcfkgENdnon7e39rP-10" value="Topic names&lt;br&gt;(from kafka SS..)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="13" y="120" width="139" height="47" as="geometry" />
         </mxCell>
-        <mxCell id="PufqcfkgENdnon7e39rP-11" value="SensitivityReceiverService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-176.25" y="137" width="146.5" height="47" as="geometry" />
+        <mxCell id="KdQ6NyA7JyGh4gVll8p5-2" value="Integration layer" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="355" y="-70" width="178" height="434" as="geometry" />
+        </mxCell>
+        <mxCell id="PufqcfkgENdnon7e39rP-11" value="DataReceiverService" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="373" y="-6" width="146.5" height="47" as="geometry" />
         </mxCell>
         <mxCell id="PufqcfkgENdnon7e39rP-12" value="MongoDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
-          <mxGeometry x="397" y="77" width="95" height="80" as="geometry" />
+          <mxGeometry x="574" y="77" width="95" height="80" as="geometry" />
         </mxCell>
         <mxCell id="PufqcfkgENdnon7e39rP-13" value="Kafka" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="389" y="267" width="120" height="60" as="geometry" />
+          <mxGeometry x="566" y="267" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="PufqcfkgENdnon7e39rP-15" value="DTO_Objects" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-301" y="258" width="106" height="35" as="geometry" />
