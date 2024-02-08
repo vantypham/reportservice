@@ -21,10 +21,10 @@ public class MockDataService {
         messageProducer.sendMessageTopic1(getReportDataObject());
     }
     public void genDataAndPutToKafka2() {
-        messageProducer.sendMessageTopic2(getReportDataObject());
+        messageProducer.sendMessageTopic2(getReportDataObject2());
     }
     public void genDataAndPutToKafka3() {
-        messageProducer.sendMessageTopic3(getReportDataObject());
+        messageProducer.sendMessageTopic3(getReportDataObject3());
     }
 
     private ReportDataObject getReportDataObject() {
@@ -33,13 +33,37 @@ public class MockDataService {
         ReportDataObject object = new ReportDataObject(id, value, System.currentTimeMillis());
         return object;
     }
+    private ReportDataObject getReportDataObject2() {
+        String id = randomId();
+        double value = randomValue2();
+        ReportDataObject object = new ReportDataObject(id, value, System.currentTimeMillis());
+        return object;
+    }
+    private ReportDataObject getReportDataObject3() {
+        String id = randomId();
+        double value = randomValue3();
+        ReportDataObject object = new ReportDataObject(id, value, System.currentTimeMillis());
+        return object;
+    }
 
     private String randomId() {
         return UUID.randomUUID().toString().replace("-", "");
     }
     private double randomValue() {
-        double rangeMin = 0.0;
+        double rangeMin = 0.8;
         double rangeMax = 1.0;
+        Random r = new Random();
+        return rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+    }
+    private double randomValue2() {
+        double rangeMin = 0.6;
+        double rangeMax = 1.0;
+        Random r = new Random();
+        return rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+    }
+    private double randomValue3() {
+        double rangeMin = 0.3;
+        double rangeMax = 0.6;
         Random r = new Random();
         return rangeMin + (rangeMax - rangeMin) * r.nextDouble();
     }
